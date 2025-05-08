@@ -1,0 +1,9 @@
+# Modern stack - works on Python 3.10 - 3.13
+langchain==0.3.25
+langgraph>=0.0.46
+langchain-openai>=0.1.9
+tiktoken>=0.6
+openai>=1.10,<2
+python-dotenv==1.0.0
+pydantic>=2.0.0,<3.0.0
+numpy<2,>=1 
