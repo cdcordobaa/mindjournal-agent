@@ -7,8 +7,7 @@ import os
 import json
 import argparse
 from dotenv import load_dotenv
-from src.integrated_workflow import run_meditation_generation, WORKFLOW_STEPS
-from src.main import EmotionalState, MeditationStyle, MeditationTheme, VoiceType, SoundscapeType
+from src.integrated_workflow import run_meditation_generation, WORKFLOW_STEPS, EmotionalState, MeditationStyle, MeditationTheme, VoiceType, SoundscapeType
 
 def main():
     # Load environment variables

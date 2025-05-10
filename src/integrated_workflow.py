@@ -1,5 +1,6 @@
 """
 Integrated workflow for meditation generation combining prosody, audio generation, and soundscape mixing.
+This file combines the functionality of the original main.py and integrated_workflow.py.
 """
 
 import os
@@ -10,6 +11,8 @@ from typing import Dict, Optional, Any, TypedDict, List
 from pathlib import Path
 import random
 import glob
+from enum import Enum
+from pydantic import BaseModel, Field
 
 from langgraph.graph import StateGraph, END
 from langchain_openai import ChatOpenAI
@@ -17,11 +20,6 @@ from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage, HumanMessage
 from langchain.output_parsers import PydanticOutputParser
 
-from src.main import (
-    EmotionalState, MeditationStyle, MeditationTheme, VoiceType, SoundscapeType,
-    ProsodyRequest, ProsodyAnalysis, ProsodyProfile, MeditationScript,
-    PitchProfile, RateProfile, PauseProfile, EmphasisProfile
-)
 from audio_generator import AudioGenerator
 from src.ffmpeg_mixer import process_meditation_audio
 
@@ -37,6 +35,119 @@ AUDIO_OUTPUT_DIR = "output/audio"
 JSON_OUTPUT_DIR = "output/json"
 SOUNDSCAPE_DIR = "soundscapes"
 STATE_DIR = "output/state"
+
+# ============ Data Models ============
+
+class EmotionalState(str, Enum):
+    HAPPY = "happy"
+    SAD = "sad"
+    ANXIOUS = "anxious"
+    CALM = "calm"
+    STRESSED = "stressed"
+    TIRED = "tired"
+    ENERGETIC = "energetic"
+    NEUTRAL = "neutral"
+
+class MeditationStyle(str, Enum):
+    MINDFULNESS = "Mindfulness"
+    GUIDED_IMAGERY = "GuidedImagery"
+    BODY_SCAN = "BodyScan"
+    LOVING_KINDNESS = "LovingKindness"
+    BREATH_FOCUS = "BreathFocus"
+    PROGRESSIVE_RELAXATION = "ProgressiveRelaxation"
+
+class MeditationTheme(str, Enum):
+    STRESS_RELIEF = "StressRelief"
+    SLEEP = "Sleep"
+    FOCUS = "Focus"
+    SELF_COMPASSION = "SelfCompassion"
+    ANXIETY_RELIEF = "AnxietyRelief"
+    CONFIDENCE = "Confidence"
+    GRATITUDE = "Gratitude"
+
+class VoiceType(str, Enum):
+    MALE = "Male"
+    FEMALE = "Female"
+    NEUTRAL = "Neutral"
+
+class SoundscapeType(str, Enum):
+    NATURE = "Nature"
+    URBAN = "Urban"
+    AMBIENT = "Ambient"
+    SILENCE = "Silence"
+    RAIN = "Rain"
+    OCEAN = "Ocean"
+    FOREST = "Forest"
+    NIGHTTIME = "Nighttime"
+
+# ============ Advanced Prosody Models ============
+
+class PitchProfile(BaseModel):
+    base_pitch: str = Field(description="Base pitch adjustment, e.g. '-10%', 'low'")
+    range: str = Field(description="Pitch range/variation, e.g. '+20%', 'wide'")
+    contour_pattern: str = Field(description="Natural pitch contour description")
+
+class RateProfile(BaseModel):
+    base_rate: str = Field(description="Base speech rate, e.g. '80%', 'slow'")
+    variation: str = Field(description="How much the rate varies, e.g. 'minimal', 'moderate'")
+    special_sections: Dict[str, str] = Field(
+        description="Special rate settings for specific sections like breathing instructions"
+    )
+
+class PauseProfile(BaseModel):
+    short_pause: str = Field(description="Duration for short pauses, e.g. '500ms'")
+    medium_pause: str = Field(description="Duration for medium pauses, e.g. '1s'")
+    long_pause: str = Field(description="Duration for long pauses, e.g. '3s'")
+    breath_pause: str = Field(description="Duration for breathing instruction pauses, e.g. '4s'")
+    sentence_pattern: str = Field(description="Pattern for sentence pauses, e.g. 'medium after statements, long after questions'")
+
+class EmphasisProfile(BaseModel):
+    intensity: str = Field(description="Overall emphasis intensity, e.g. 'strong', 'moderate', 'soft'")
+    key_terms: List[str] = Field(description="List of terms that should receive special emphasis")
+
+class ProsodyProfile(BaseModel):
+    """Complete prosody profile for a specific emotional state and meditation context"""
+    pitch: PitchProfile
+    rate: RateProfile
+    pauses: PauseProfile
+    emphasis: EmphasisProfile
+    volume: str = Field(description="Overall volume setting, e.g. 'soft', 'medium', '+5dB'")
+    voice_quality: Optional[str] = Field(default=None, description="Voice quality hint if supported, e.g. 'breathy', 'warm'")
+    
+    # Section-specific profiles
+    intro_adjustments: Dict[str, str] = Field(description="Specific adjustments for introduction section")
+    body_adjustments: Dict[str, str] = Field(description="Specific adjustments for main body section")
+    closing_adjustments: Dict[str, str] = Field(description="Specific adjustments for closing section")
+    
+    # Language-specific adjustments
+    language_adjustments: Dict[str, Dict[str, str]] = Field(
+        description="Adjustments specific to each language code"
+    )
+
+class ProsodyRequest(BaseModel):
+    """Input request for the prosody system"""
+    emotional_state: EmotionalState
+    meditation_style: MeditationStyle
+    meditation_theme: MeditationTheme
+    duration_minutes: int
+    voice_type: VoiceType
+    language_code: str
+    soundscape: SoundscapeType
+
+class MeditationScript(BaseModel):
+    """Raw meditation script text"""
+    content: str
+    sections: List[Dict[str, str]] = Field(
+        description="Identified sections of the meditation (intro, body, guidance, closing, etc.)"
+    )
+
+class ProsodyAnalysis(BaseModel):
+    """Analysis of prosody needs for the specific meditation"""
+    overall_tone: str
+    key_terms: List[str]
+    breathing_patterns: List[Dict[str, str]]
+    recommended_emphasis_points: List[Dict[str, str]]
+    section_characteristics: Dict[str, str]
 
 class GraphState(TypedDict):
     """The state object that will be passed between nodes in our LangGraph"""
@@ -58,6 +169,8 @@ WORKFLOW_STEPS = [
     "generate_audio",
     "mix_audio"
 ]
+
+# ============ Helper Functions ============
 
 def save_state(state: GraphState, step: str) -> str:
     """Save the current state to a JSON file"""
@@ -100,104 +213,16 @@ def get_latest_state_file(step: Optional[str] = None) -> Optional[str]:
         logger.error(f"Error finding latest state file: {str(e)}")
         return None
 
-def run_workflow_step(step: str, state: Optional[GraphState] = None) -> GraphState:
-    """Run a single step of the workflow"""
-    if step not in WORKFLOW_STEPS:
-        raise ValueError(f"Invalid step: {step}. Must be one of {WORKFLOW_STEPS}")
-    
-    # Load state if not provided
-    if state is None:
-        # Try to load the latest state from the previous step
-        prev_step_idx = WORKFLOW_STEPS.index(step) - 1
-        if prev_step_idx >= 0:
-            prev_step = WORKFLOW_STEPS[prev_step_idx]
-            state_file = get_latest_state_file(prev_step)
-            if state_file:
-                state = load_state(state_file)
-    
-    # Initialize new state if needed
-    if state is None:
-        state = {
-            "request": {},
-            "meditation_script": None,
-            "prosody_analysis": None,
-            "prosody_profile": None,
-            "ssml_output": None,
-            "audio_output": None,
-            "error": None,
-            "current_step": step
-        }
-    
-    # Create workflow graph
-    workflow = StateGraph(GraphState)
-    
-    # Add all nodes
-    workflow.add_node("generate_script", generate_meditation_script)
-    workflow.add_node("analyze_prosody", analyze_prosody_needs)
-    workflow.add_node("create_profile", generate_prosody_profile)
-    workflow.add_node("generate_ssml", generate_ssml)
-    workflow.add_node("generate_audio", generate_meditation_audio)
-    workflow.add_node("mix_audio", mix_with_soundscape)
-    
-    # Add edges
-    for i in range(len(WORKFLOW_STEPS) - 1):
-        workflow.add_edge(WORKFLOW_STEPS[i], WORKFLOW_STEPS[i + 1])
-    workflow.add_edge(WORKFLOW_STEPS[-1], END)
-    
-    # Set entry point
-    workflow.set_entry_point(step)
-    
-    # Compile and run
-    compiled_workflow = workflow.compile()
-    result = compiled_workflow.invoke(state)
-    
-    # Save state after step completion
-    save_state(result, step)
-    
-    return result
+def split_into_sentences(text):
+    """Simple sentence splitter - would be more sophisticated in production"""
+    import re
+    # Split on periods, question marks, and exclamation points
+    # but keep the punctuation with the sentence
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    # Filter out empty sentences
+    return [s for s in sentences if s.strip()]
 
-def run_meditation_generation(request_data: Dict[str, Any], start_step: Optional[str] = None) -> Dict[str, Any]:
-    """Run the meditation generation process, optionally starting from a specific step"""
-    if start_step:
-        if start_step not in WORKFLOW_STEPS:
-            raise ValueError(f"Invalid start step: {start_step}. Must be one of {WORKFLOW_STEPS}")
-        
-        # Try to load previous state
-        state = None
-        prev_step_idx = WORKFLOW_STEPS.index(start_step) - 1
-        if prev_step_idx >= 0:
-            prev_step = WORKFLOW_STEPS[prev_step_idx]
-            state_file = get_latest_state_file(prev_step)
-            if state_file:
-                state = load_state(state_file)
-        
-        # Initialize state if needed
-        if state is None:
-            state = {
-                "request": request_data,
-                "meditation_script": None,
-                "prosody_analysis": None,
-                "prosody_profile": None,
-                "ssml_output": None,
-                "audio_output": None,
-                "error": None,
-                "current_step": start_step
-            }
-        
-        return run_workflow_step(start_step, state)
-    else:
-        # Run complete workflow from start
-        state = {
-            "request": request_data,
-            "meditation_script": None,
-            "prosody_analysis": None,
-            "prosody_profile": None,
-            "ssml_output": None,
-            "audio_output": None,
-            "error": None,
-            "current_step": WORKFLOW_STEPS[0]
-        }
-        return run_workflow_step(WORKFLOW_STEPS[0], state)
+# ============ Workflow Node Functions ============
 
 def generate_meditation_script(state: GraphState) -> GraphState:
     """Generate the raw meditation script based on the request parameters"""
@@ -501,12 +526,9 @@ def generate_ssml(state: GraphState) -> GraphState:
             
             # Process the content
             # Split into sentences
-            sentences = content.split(". ")
+            sentences = split_into_sentences(content)
             for sentence in sentences:
-                if not sentence.strip():
-                    continue
-                    
-                processed_sentence = sentence.strip()
+                processed_sentence = sentence
                 
                 # Add emphasis for key terms
                 for term in profile["emphasis"]["key_terms"]:
@@ -517,15 +539,17 @@ def generate_ssml(state: GraphState) -> GraphState:
                         )
                 
                 # Add the sentence to SSML
-                ssml += processed_sentence + ". "
+                ssml += processed_sentence
                 
                 # Add appropriate pause based on context
                 if "inhala" in sentence.lower() or "exhala" in sentence.lower():
                     ssml += f' <break time="{profile["pauses"]["breath_pause"]}"/>\n'
                 elif sentence.endswith("?"):
                     ssml += f' <break time="{profile["pauses"]["medium_pause"]}"/>\n'
-                else:
+                elif sentence.endswith("."):
                     ssml += f' <break time="{profile["pauses"]["short_pause"]}"/>\n'
+                else:
+                    ssml += "\n"
             
             ssml += "</prosody>\n"
         
@@ -565,7 +589,7 @@ def generate_meditation_audio(state: GraphState) -> GraphState:
         
         # Get the appropriate voice ID from the voice maps
         voice_map = generator.VOICE_MAPS.get(language_code, generator.VOICE_MAPS['en-US'])
-        voice_id = voice_map.get(voice_type.value, voice_map[VoiceType.NEUTRAL.value])  # Use .value to get string
+        voice_id = voice_map.get(voice_type.value, voice_map[VoiceType.NEUTRAL.value])
         
         # Generate audio from SSML
         audio_file = generator.generate_audio_from_ssml(
@@ -658,4 +682,118 @@ def mix_with_soundscape(state: GraphState) -> GraphState:
         
     except Exception as e:
         state["error"] = f"Error mixing audio (ffmpeg): {str(e)}"
-        return state 
+        return state
+
+def run_workflow_step(step: str, state: Optional[GraphState] = None) -> GraphState:
+    """Run a single step of the workflow"""
+    if step not in WORKFLOW_STEPS:
+        raise ValueError(f"Invalid step: {step}. Must be one of {WORKFLOW_STEPS}")
+    
+    # Load state if not provided
+    if state is None:
+        # Try to load the latest state from the previous step
+        prev_step_idx = WORKFLOW_STEPS.index(step) - 1
+        if prev_step_idx >= 0:
+            prev_step = WORKFLOW_STEPS[prev_step_idx]
+            state_file = get_latest_state_file(prev_step)
+            if state_file:
+                state = load_state(state_file)
+    
+    # Initialize new state if needed
+    if state is None:
+        state = {
+            "request": {},
+            "meditation_script": None,
+            "prosody_analysis": None,
+            "prosody_profile": None,
+            "ssml_output": None,
+            "audio_output": None,
+            "error": None,
+            "current_step": step
+        }
+    
+    # Create workflow graph
+    workflow = StateGraph(GraphState)
+    
+    # Add all nodes
+    workflow.add_node("generate_script", generate_meditation_script)
+    workflow.add_node("analyze_prosody", analyze_prosody_needs)
+    workflow.add_node("create_profile", generate_prosody_profile)
+    workflow.add_node("generate_ssml", generate_ssml)
+    workflow.add_node("generate_audio", generate_meditation_audio)
+    workflow.add_node("mix_audio", mix_with_soundscape)
+    
+    # Add edges
+    for i in range(len(WORKFLOW_STEPS) - 1):
+        workflow.add_edge(WORKFLOW_STEPS[i], WORKFLOW_STEPS[i + 1])
+    workflow.add_edge(WORKFLOW_STEPS[-1], END)
+    
+    # Set entry point
+    workflow.set_entry_point(step)
+    
+    # Compile and run
+    compiled_workflow = workflow.compile()
+    result = compiled_workflow.invoke(state)
+    
+    # Save state after step completion
+    save_state(result, step)
+    
+    return result
+
+def run_meditation_generation(request_data: Dict[str, Any], start_step: Optional[str] = None) -> Dict[str, Any]:
+    """Run the meditation generation process, optionally starting from a specific step"""
+    if start_step:
+        if start_step not in WORKFLOW_STEPS:
+            raise ValueError(f"Invalid start step: {start_step}. Must be one of {WORKFLOW_STEPS}")
+        
+        # Try to load previous state
+        state = None
+        prev_step_idx = WORKFLOW_STEPS.index(start_step) - 1
+        if prev_step_idx >= 0:
+            prev_step = WORKFLOW_STEPS[prev_step_idx]
+            state_file = get_latest_state_file(prev_step)
+            if state_file:
+                state = load_state(state_file)
+        
+        # Initialize state if needed
+        if state is None:
+            state = {
+                "request": request_data,
+                "meditation_script": None,
+                "prosody_analysis": None,
+                "prosody_profile": None,
+                "ssml_output": None,
+                "audio_output": None,
+                "error": None,
+                "current_step": start_step
+            }
+        
+        return run_workflow_step(start_step, state)
+    else:
+        # Run complete workflow from start
+        state = {
+            "request": request_data,
+            "meditation_script": None,
+            "prosody_analysis": None,
+            "prosody_profile": None,
+            "ssml_output": None,
+            "audio_output": None,
+            "error": None,
+            "current_step": WORKFLOW_STEPS[0]
+        }
+        return run_workflow_step(WORKFLOW_STEPS[0], state)
+
+if __name__ == "__main__":
+    # Example usage
+    request_data = {
+        "emotional_state": EmotionalState.ANXIOUS.value,
+        "meditation_style": MeditationStyle.MINDFULNESS.value,
+        "meditation_theme": MeditationTheme.STRESS_RELIEF.value,
+        "duration_minutes": 10,
+        "voice_type": VoiceType.FEMALE.value,
+        "language_code": "en-US",
+        "soundscape": SoundscapeType.NATURE.value
+    }
+    
+    result = run_meditation_generation(request_data)
+    print(json.dumps(result, indent=2)) 
