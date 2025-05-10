@@ -3,14 +3,14 @@ import os
 import json
 from datetime import datetime
 from botocore.exceptions import ClientError
-from enum import Enum, auto
+from enum import Enum
 from typing import Optional, Dict, Any
 
 
 class VoiceType(Enum):
-    MALE = auto()
-    FEMALE = auto()
-    NEUTRAL = auto()
+    MALE = "Male"
+    FEMALE = "Female"
+    NEUTRAL = "Neutral"
 
 
 class AudioGenerator:
@@ -19,14 +19,14 @@ class AudioGenerator:
     # Voice mappings for different languages
     VOICE_MAPS = {
         'es-ES': {
-            VoiceType.MALE: 'Andrés',
-            VoiceType.FEMALE: 'Conchita',
-            VoiceType.NEUTRAL: 'Mia'  # Default to Mia when neutral is requested
+            VoiceType.MALE.value: 'Andrés',
+            VoiceType.FEMALE.value: 'Conchita',
+            VoiceType.NEUTRAL.value: 'Mia'  # Default to Mia when neutral is requested
         },
         'en-US': {
-            VoiceType.MALE: 'Matthew',
-            VoiceType.FEMALE: 'Joanna',
-            VoiceType.NEUTRAL: 'Ivy'
+            VoiceType.MALE.value: 'Matthew',
+            VoiceType.FEMALE.value: 'Joanna',
+            VoiceType.NEUTRAL.value: 'Ivy'
         }
     }
     
@@ -156,7 +156,7 @@ class AudioGenerator:
             
             # Get the appropriate voice ID
             voice_map = self.VOICE_MAPS.get(language_code, self.VOICE_MAPS['en-US'])
-            voice_id = voice_map.get(voice_type, voice_map[VoiceType.NEUTRAL])
+            voice_id = voice_map.get(voice_type.value, voice_map[VoiceType.NEUTRAL.value])
             
             # Generate audio
             return self.generate_audio_from_ssml(
