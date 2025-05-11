@@ -1732,3 +1732,1480 @@ PROSODY PROFILE:
   "current_step": "generate_script"
 }
 2025-05-11 00:30:33,394 - meditation_tts - INFO - Saved state to: output/state/state_generate_script_20250511_003033.json
+2025-05-11 00:38:22,911 - meditation_tts - INFO - Starting meditation generation process from step: generate_script
+2025-05-11 00:38:22,912 - meditation_tts - INFO - Will stop after step: generate_script
+2025-05-11 00:38:22,912 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:38:22,912 - meditation_tts - INFO - Running steps: ['generate_script']
+2025-05-11 00:38:22,913 - meditation_tts - INFO - Running step: generate_script
+2025-05-11 00:38:22,913 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "None", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present"}
+2025-05-11 00:38:22,913 - meditation_tts - INFO - Running single step: generate_script
+2025-05-11 00:38:22,914 - meditation_tts - INFO - State before single step generate_script: {"request": "Present", "meditation_script": "None", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present"}
+2025-05-11 00:38:22,914 - meditation_tts - INFO - Starting meditation script generation
+2025-05-11 00:38:22,914 - meditation_tts - INFO - ===== STEP: generate_meditation_script =====
+2025-05-11 00:38:22,914 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": null,
+  "prosody_analysis": null,
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_script"
+}
+2025-05-11 00:38:22,977 - meditation_tts - INFO - Requesting script generation for Mindfulness meditation on StressRelief
+2025-05-11 00:38:32,973 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:38:32,981 - meditation_tts - INFO - LLM Interaction: Meditation Script Generation
+2025-05-11 00:38:32,981 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:38:32,981 - meditation_tts - INFO - Prompt preview: Create a 12-minute Mindfulness meditation script focused on StressRelief for someone feeling anxious.
+
+The script should be in en-US and voiced by a Female voice.
+
+Include these essential components:
+1. A welcoming introduction (30-45 seconds)
+2. Grounding/centering instructions
+3. Breathing guidance appropriate for this style and emotional state
+4. The main practice section specific to Mindfulness
+5. A gentle closing with integration (30-45 seconds)
+
+Structure the script clearly with section ma...
+2025-05-11 00:38:32,981 - meditation_tts - INFO - Response preview: [INTRODUCTION]
+
+Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of calm and ease. In this space, you are invited to let go of the day's stresses and connect with the present moment. Wherever you are, know that you are safe, supported, and free to relax into this practice. This time is just for you, a gift of self-care and self-compassion. As we begin, take a moment to acknowledge this intention to reduce anxiety and embrace peace. 
+
+[GRO...
+2025-05-11 00:38:32,982 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003832_Meditation_Script_Generation.json
+2025-05-11 00:38:32,982 - meditation_tts - INFO - Generated script with 3806 characters
+2025-05-11 00:38:32,982 - meditation_tts - INFO - Requesting section analysis
+2025-05-11 00:38:37,984 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:38:37,993 - meditation_tts - INFO - LLM Interaction: Script Section Analysis
+2025-05-11 00:38:37,993 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:38:37,993 - meditation_tts - INFO - Prompt preview: Analyze this meditation script and identify distinct sections with their boundaries.
+
+SCRIPT:
+[INTRODUCTION]
+
+Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of calm and ease. In this space, you are invited to let go of the day's stresses and connect with the present moment. Wherever you are, know that you are safe, supported, and free to relax into this practice. This time is just for you, a gift of self-care and self-compassion. As we ...
+2025-05-11 00:38:37,993 - meditation_tts - INFO - Response preview: ```json
+[
+    {
+        "section_type": "introduction",
+        "content": "Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of calm and ease. In this space, you are invited to let go of the day's stresses and connect with the present moment. Wherever you are, know that you are safe, supported, and free to relax into this practice. This time is just for you, a gift of self-care and self-compassion. As we begin, take a moment to acknowledg...
+2025-05-11 00:38:37,995 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003837_Script_Section_Analysis.json
+2025-05-11 00:38:37,996 - meditation_tts - INFO - Completed script generation with 6 sections
+2025-05-11 00:38:37,996 - meditation_tts - INFO - ===== STEP: generate_meditation_script_complete =====
+2025-05-11 00:38:37,998 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": null,
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_script",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:38:37,999 - meditation_tts - INFO - Saved state after step generate_script to: output/state/state_generate_script_20250511_003837.json
+2025-05-11 00:38:37,999 - meditation_tts - INFO - State after single step generate_script: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:38,004 - meditation_tts - INFO - Starting meditation generation process from step: analyze_prosody
+2025-05-11 00:38:38,004 - meditation_tts - INFO - Will stop after step: analyze_prosody
+2025-05-11 00:38:38,005 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:38:38,005 - meditation_tts - INFO - Running steps: ['analyze_prosody']
+2025-05-11 00:38:38,005 - meditation_tts - INFO - Running step: analyze_prosody
+2025-05-11 00:38:38,006 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:38,006 - meditation_tts - INFO - Running single step: analyze_prosody
+2025-05-11 00:38:38,007 - meditation_tts - INFO - State before single step analyze_prosody: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:38,007 - meditation_tts - INFO - Starting prosody needs analysis
+2025-05-11 00:38:38,007 - meditation_tts - INFO - ===== STEP: analyze_prosody_needs =====
+2025-05-11 00:38:38,008 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": null,
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "analyze_prosody",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:38:38,037 - meditation_tts - INFO - Requesting prosody analysis
+2025-05-11 00:38:49,153 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:38:49,157 - meditation_tts - INFO - LLM Interaction: Prosody Analysis
+2025-05-11 00:38:49,157 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:38:49,157 - meditation_tts - INFO - Prompt preview: I need a detailed prosody analysis for this meditation script that will be narrated using AWS Polly Neural voices (primarily Joanna for English, Conchita for Spanish).
+
+Script context:
+- Emotional state: anxious
+- Meditation style: Mindfulness
+- Theme: StressRelief
+- Duration: 12 minutes
+- Language: en-US
+
+Here is the meditation script:
+        [INTRODUCTION]
+
+Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of calm and ease. In this spac...
+2025-05-11 00:38:49,157 - meditation_tts - INFO - Response preview: ```json
+{
+  "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+  "key_terms": ["calm", "ease", "present moment", "grounded", "breath", "relaxation", "awareness", "peace"],
+  "breathing_patterns": [
+    {
+      "type": "4-4 breathing",
+      "phases": {
+        "inhale": "4 seconds",
+        "hold": "brief pause",...
+2025-05-11 00:38:49,159 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003849_Prosody_Analysis.json
+2025-05-11 00:38:49,159 - meditation_tts - INFO - Completed prosody analysis
+2025-05-11 00:38:49,159 - meditation_tts - INFO - ===== STEP: analyze_prosody_needs_complete =====
+2025-05-11 00:38:49,160 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "analyze_prosody",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:38:49,162 - meditation_tts - INFO - Saved state after step analyze_prosody to: output/state/state_analyze_prosody_20250511_003849.json
+2025-05-11 00:38:49,162 - meditation_tts - INFO - State after single step analyze_prosody: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:49,167 - meditation_tts - INFO - Starting meditation generation process from step: create_profile
+2025-05-11 00:38:49,167 - meditation_tts - INFO - Will stop after step: create_profile
+2025-05-11 00:38:49,167 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:38:49,168 - meditation_tts - INFO - Running steps: ['create_profile']
+2025-05-11 00:38:49,168 - meditation_tts - INFO - Running step: create_profile
+2025-05-11 00:38:49,168 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:49,168 - meditation_tts - INFO - Running single step: create_profile
+2025-05-11 00:38:49,168 - meditation_tts - INFO - State before single step create_profile: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:49,168 - meditation_tts - INFO - Starting prosody profile generation
+2025-05-11 00:38:49,169 - meditation_tts - INFO - ===== STEP: generate_prosody_profile =====
+2025-05-11 00:38:49,169 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "create_profile",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:38:49,198 - meditation_tts - INFO - Requesting prosody profile generation
+2025-05-11 00:38:54,766 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:38:54,770 - meditation_tts - INFO - LLM Interaction: Prosody Profile Generation
+2025-05-11 00:38:54,770 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:38:54,770 - meditation_tts - INFO - Prompt preview: Create a comprehensive prosody profile for this meditation:
+
+CONTEXT:
+- Emotional state: anxious
+- Meditation style: Mindfulness
+- Theme: StressRelief
+- Duration: 12 minutes
+- Language: en-US
+- Voice: Female (en-US)
+
+PROSODY ANALYSIS:
+{
+  "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+  "key_terms": [
+    "ca...
+2025-05-11 00:38:54,770 - meditation_tts - INFO - Response preview: ```json
+{
+  "pitch": {
+    "base_pitch": "-10%",
+    "range": "moderate",
+    "contour_pattern": "gradual downward drift with gentle rises",
+    "emotional_contours": {
+      "calm": "gradual downward drift with gentle rises",
+      "anxious": "higher baseline with more variation",
+      "energetic": "higher baseline with upward contours",
+      "tired": "lower baseline with minimal variation",
+      "happy": "moderate baseline with upward contours",
+      "sad": "lower baseline with downward co...
+2025-05-11 00:38:54,771 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003854_Prosody_Profile_Generation.json
+2025-05-11 00:38:54,772 - meditation_tts - INFO - Completed prosody profile generation
+2025-05-11 00:38:54,772 - meditation_tts - INFO - ===== STEP: generate_prosody_profile_complete =====
+2025-05-11 00:38:54,772 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "create_profile",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:38:54,774 - meditation_tts - INFO - Saved state after step create_profile to: output/state/state_create_profile_20250511_003854.json
+2025-05-11 00:38:54,774 - meditation_tts - INFO - State after single step create_profile: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:54,779 - meditation_tts - INFO - Starting meditation generation process from step: generate_ssml
+2025-05-11 00:38:54,779 - meditation_tts - INFO - Will stop after step: generate_ssml
+2025-05-11 00:38:54,780 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:38:54,780 - meditation_tts - INFO - Running steps: ['generate_ssml']
+2025-05-11 00:38:54,780 - meditation_tts - INFO - Running step: generate_ssml
+2025-05-11 00:38:54,780 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:54,780 - meditation_tts - INFO - Running single step: generate_ssml
+2025-05-11 00:38:54,781 - meditation_tts - INFO - State before single step generate_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:38:54,781 - meditation_tts - INFO - Starting SSML generation
+2025-05-11 00:38:54,781 - meditation_tts - INFO - ===== STEP: generate_ssml =====
+2025-05-11 00:38:54,781 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:38:54,815 - meditation_tts - INFO - Requesting SSML generation
+2025-05-11 00:39:06,460 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:39:06,462 - meditation_tts - INFO - LLM Interaction: SSML Generation
+2025-05-11 00:39:06,463 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:39:06,463 - meditation_tts - INFO - Prompt preview: Generate optimal SSML markup for this meditation script that will be synthesized using AWS Polly Neural voices.
+
+CONTEXT:
+- Emotional state: anxious
+- Meditation style: Mindfulness
+- Theme: StressRelief
+- Duration: 12 minutes
+- Language: en-US
+- Voice: Female (en-US)
+
+PROSODY PROFILE:
+{
+  "pitch": {
+    "base_pitch": "-10%",
+    "range": "moderate",
+    "contour_pattern": "gradual downward drift with gentle rises",
+    "emotional_contours": {
+      "calm": "gradual downward drift with gentle ris...
+2025-05-11 00:39:06,463 - meditation_tts - INFO - Response preview: ```xml
+<speak>
+  <p>
+    <prosody pitch="-5%" rate="80%" volume="medium">
+      Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of <prosody pitch="-5%" rate="90%">calm</prosody> and <prosody pitch="-5%" rate="90%">ease</prosody>. In this space, you are invited to let go of the day's stresses and connect with the <prosody pitch="-5%" rate="90%">present moment</prosody>. Wherever you are, know that you are safe, supported, and free to rela...
+2025-05-11 00:39:06,464 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003906_SSML_Generation.json
+2025-05-11 00:39:06,465 - meditation_tts - INFO - Completed initial SSML generation with 5680 characters
+2025-05-11 00:39:06,465 - meditation_tts - INFO - The SSML will be reviewed and improved in the next step
+2025-05-11 00:39:06,465 - meditation_tts - INFO - ===== STEP: generate_ssml_complete =====
+2025-05-11 00:39:06,465 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:39:06,467 - meditation_tts - INFO - Saved state after step generate_ssml to: output/state/state_generate_ssml_20250511_003906.json
+2025-05-11 00:39:06,467 - meditation_tts - INFO - State after single step generate_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:39:06,472 - meditation_tts - INFO - Starting meditation generation process from step: review_and_improve_ssml
+2025-05-11 00:39:06,472 - meditation_tts - INFO - Will stop after step: review_and_improve_ssml
+2025-05-11 00:39:06,473 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:39:06,473 - meditation_tts - INFO - Running steps: ['review_and_improve_ssml']
+2025-05-11 00:39:06,473 - meditation_tts - INFO - Running step: review_and_improve_ssml
+2025-05-11 00:39:06,473 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:39:06,473 - meditation_tts - INFO - Running single step: review_and_improve_ssml
+2025-05-11 00:39:06,473 - meditation_tts - INFO - State before single step review_and_improve_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:39:06,473 - meditation_tts - INFO - Starting SSML review and improvement
+2025-05-11 00:39:06,474 - meditation_tts - INFO - ===== STEP: review_and_improve_ssml =====
+2025-05-11 00:39:06,474 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "review_and_improve_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:39:06,504 - meditation_tts - INFO - Starting SSML review iteration 1
+2025-05-11 00:39:06,504 - meditation_tts - INFO - Requesting SSML review iteration 1
+2025-05-11 00:39:18,206 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:39:18,209 - meditation_tts - INFO - LLM Interaction: SSML Review Iteration 1
+2025-05-11 00:39:18,209 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:39:18,209 - meditation_tts - INFO - Prompt preview: Review and fix the following SSML for a meditation:
+
+```xml
+<speak>
+  <p>
+    <prosody pitch="-5%" rate="80%" volume="medium">
+      Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of <prosody pitch="-5%" rate="90%">calm</prosody> and <prosody pitch="-5%" rate="90%">ease</prosody>. In this space, you are invited to let go of the day's stresses and connect with the <prosody pitch="-5%" rate="90%">present moment</prosody>. Wherever you are...
+2025-05-11 00:39:18,209 - meditation_tts - INFO - Response preview: Upon reviewing the provided SSML, I have identified several areas for improvement to ensure technical correctness, compatibility with AWS Polly Neural voices, and enhancement of the meditation experience. Here are the corrections and enhancements made:
+
+1. **Technical Correctness**:
+   - All tags are properly balanced and nested.
+   - Break times are specified with units ("s" for seconds).
+   - No invalid attribute values were found.
+
+2. **AWS Polly Neural Voice Compatibility**:
+   - The SSML us...
+2025-05-11 00:39:18,210 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003918_SSML_Review_Iteration_1.json
+2025-05-11 00:39:18,211 - meditation_tts - INFO - SSML updated in iteration 1
+2025-05-11 00:39:18,211 - meditation_tts - INFO - Starting SSML review iteration 2
+2025-05-11 00:39:18,211 - meditation_tts - INFO - Requesting SSML review iteration 2
+2025-05-11 00:39:27,714 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:39:27,717 - meditation_tts - INFO - LLM Interaction: SSML Review Iteration 2
+2025-05-11 00:39:27,717 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:39:27,717 - meditation_tts - INFO - Prompt preview: Review and fix the following SSML for a meditation:
+
+```xml
+<speak>
+  <p>
+    <prosody pitch="-5%" rate="80%" volume="medium">
+      Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of <prosody pitch="-5%" rate="85%">calm</prosody> and <prosody pitch="-5%" rate="85%">ease</prosody>. In this space, you are invited to let go of the day's stresses and connect with the <prosody pitch="-5%" rate="85%">present moment</prosody>. Wherever you are...
+2025-05-11 00:39:27,718 - meditation_tts - INFO - Response preview: Upon reviewing the provided SSML, I found it to be technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags only. However, there are opportunities to enhance the meditation experience by adjusting the prosody for a more gradual slowing of the rate and ensuring a consistent relaxation tone throughout the meditation.
+
+Here is the improved SSML with enhancements for meditation experience:
+
+```xm...
+2025-05-11 00:39:27,719 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003927_SSML_Review_Iteration_2.json
+2025-05-11 00:39:27,719 - meditation_tts - INFO - SSML updated in iteration 2
+2025-05-11 00:39:27,719 - meditation_tts - INFO - Starting SSML review iteration 3
+2025-05-11 00:39:27,719 - meditation_tts - INFO - Requesting SSML review iteration 3
+2025-05-11 00:39:36,769 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:39:36,772 - meditation_tts - INFO - LLM Interaction: SSML Review Iteration 3
+2025-05-11 00:39:36,772 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:39:36,772 - meditation_tts - INFO - Prompt preview: Review and fix the following SSML for a meditation:
+
+```xml
+<speak>
+  <p>
+    <prosody pitch="-5%" rate="80%" volume="medium">
+      Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of <prosody pitch="-5%" rate="85%">calm</prosody> and <prosody pitch="-5%" rate="85%">ease</prosody>. In this space, you are invited to let go of the day's stresses and connect with the <prosody pitch="-5%" rate="85%">present moment</prosody>. Wherever you are...
+2025-05-11 00:39:36,772 - meditation_tts - INFO - Response preview: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the prosody and pacing for a more relaxing effect. Here is the improved SSML with these enhancements:
+
+```xml
+<speak>
+  <p>
+    <prosody pitch="-5%" rate="80%" volume="medium">
+      Welcome, and thank you for joining this mindfulness meditation designed to gently guide you toward a state of <prosody...
+2025-05-11 00:39:36,773 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_003936_SSML_Review_Iteration_3.json
+2025-05-11 00:39:36,774 - meditation_tts - INFO - SSML updated in iteration 3
+2025-05-11 00:39:36,774 - meditation_tts - INFO - Completed SSML review after 3 iterations
+2025-05-11 00:39:36,774 - meditation_tts - INFO - ===== STEP: review_and_improve_ssml_complete =====
+2025-05-11 00:39:36,774 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "review_and_improve_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I have identified several areas for improvement to ensure technical correctness, compatibility with AWS Polly Neural voices, and enhancement of the meditation experience. Here are the corrections and enhancements made:\n\n1. **Technical Correctness**:\n   - All tags are properly balanced and nested.\n   - Break times are specified with units (\"s\" for seconds).\n   - No invalid attribute values were found.\n\n2. **AWS Polly Neural Voice Compatibility**:\n   - The SSML uses only supported tags for AWS Polly Neural voices.\n\n3. **Meditation Experience Enhancement**:\n   - Gradually decreased the prosody rate throughout the meditation to enhance relaxation.\n   - Adjusted pitch and volume for deeper relaxation sections.\n   - Ensured appropriate pause durations after breathing instructions to allow for a calming effect.\n\nHere is the corrected and improved SSML:",
+      "Iteration 2: Upon reviewing the provided SSML, I found it to be technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags only. However, there are opportunities to enhance the meditation experience by adjusting the prosody for a more gradual slowing of the rate and ensuring a consistent relaxation tone throughout the meditation.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the prosody and pacing for a more relaxing effect. Here is the improved SSML with these enhancements:"
+    ]
+  }
+}
+2025-05-11 00:39:36,777 - meditation_tts - INFO - Saved state after step review_and_improve_ssml to: output/state/state_review_and_improve_ssml_20250511_003936.json
+2025-05-11 00:39:36,777 - meditation_tts - INFO - State after single step review_and_improve_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:39:36,786 - meditation_tts - INFO - Starting meditation generation process from step: generate_audio
+2025-05-11 00:39:36,787 - meditation_tts - INFO - Will stop after step: generate_audio
+2025-05-11 00:39:36,787 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:39:36,787 - meditation_tts - INFO - Running steps: ['generate_audio']
+2025-05-11 00:39:36,787 - meditation_tts - INFO - Running step: generate_audio
+2025-05-11 00:39:36,788 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:39:36,788 - meditation_tts - INFO - Running single step: generate_audio
+2025-05-11 00:39:36,788 - meditation_tts - INFO - State before single step generate_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:39:36,788 - meditation_tts - INFO - Starting audio generation
+2025-05-11 00:39:36,788 - meditation_tts - INFO - ===== STEP: generate_meditation_audio =====
+2025-05-11 00:39:36,788 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I have identified several areas for improvement to ensure technical correctness, compatibility with AWS Polly Neural voices, and enhancement of the meditation experience. Here are the corrections and enhancements made:\n\n1. **Technical Correctness**:\n   - All tags are properly balanced and nested.\n   - Break times are specified with units (\"s\" for seconds).\n   - No invalid attribute values were found.\n\n2. **AWS Polly Neural Voice Compatibility**:\n   - The SSML uses only supported tags for AWS Polly Neural voices.\n\n3. **Meditation Experience Enhancement**:\n   - Gradually decreased the prosody rate throughout the meditation to enhance relaxation.\n   - Adjusted pitch and volume for deeper relaxation sections.\n   - Ensured appropriate pause durations after breathing instructions to allow for a calming effect.\n\nHere is the corrected and improved SSML:",
+      "Iteration 2: Upon reviewing the provided SSML, I found it to be technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags only. However, there are opportunities to enhance the meditation experience by adjusting the prosody for a more gradual slowing of the rate and ensuring a consistent relaxation tone throughout the meditation.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the prosody and pacing for a more relaxing effect. Here is the improved SSML with these enhancements:"
+    ]
+  }
+}
+2025-05-11 00:39:36,875 - meditation_tts - INFO - SSML length: 5680 characters
+2025-05-11 00:39:36,875 - meditation_tts - INFO - SSML exceeds AWS Polly length limit (5680 chars), splitting into chunks
+2025-05-11 00:39:36,932 - meditation_tts - INFO - Splitting SSML using 6 paragraph tags
+2025-05-11 00:39:36,932 - meditation_tts - INFO - Split SSML into 2 chunks
+2025-05-11 00:39:36,932 - meditation_tts - INFO - Generating audio for chunk 1/2 (2654 chars)
+2025-05-11 00:39:39,619 - meditation_tts - INFO - Audio content written to file output/audio/meditation_audio_Joanna_20250511_003936_chunk_1.mp3
+2025-05-11 00:39:39,619 - meditation_tts - INFO - Generated chunk 1/2: output/audio/meditation_audio_Joanna_20250511_003936_chunk_1.mp3
+2025-05-11 00:39:39,619 - meditation_tts - INFO - Generating audio for chunk 2/2 (2881 chars)
+2025-05-11 00:39:41,349 - meditation_tts - INFO - Audio content written to file output/audio/meditation_audio_Joanna_20250511_003939_chunk_2.mp3
+2025-05-11 00:39:41,350 - meditation_tts - INFO - Generated chunk 2/2: output/audio/meditation_audio_Joanna_20250511_003939_chunk_2.mp3
+2025-05-11 00:39:41,681 - meditation_tts - INFO - Combined 2 audio chunks into: output/audio/meditation_voice_20250511_003941.mp3
+2025-05-11 00:39:41,682 - meditation_tts - INFO - Generated audio file: output/audio/meditation_voice_20250511_003941.mp3
+2025-05-11 00:39:41,682 - meditation_tts - INFO - ===== STEP: generate_meditation_audio_complete =====
+2025-05-11 00:39:41,682 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": {
+    "status": "generated",
+    "voice_file": "output/audio/meditation_voice_20250511_003941.mp3"
+  },
+  "error": null,
+  "current_step": "generate_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I have identified several areas for improvement to ensure technical correctness, compatibility with AWS Polly Neural voices, and enhancement of the meditation experience. Here are the corrections and enhancements made:\n\n1. **Technical Correctness**:\n   - All tags are properly balanced and nested.\n   - Break times are specified with units (\"s\" for seconds).\n   - No invalid attribute values were found.\n\n2. **AWS Polly Neural Voice Compatibility**:\n   - The SSML uses only supported tags for AWS Polly Neural voices.\n\n3. **Meditation Experience Enhancement**:\n   - Gradually decreased the prosody rate throughout the meditation to enhance relaxation.\n   - Adjusted pitch and volume for deeper relaxation sections.\n   - Ensured appropriate pause durations after breathing instructions to allow for a calming effect.\n\nHere is the corrected and improved SSML:",
+      "Iteration 2: Upon reviewing the provided SSML, I found it to be technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags only. However, there are opportunities to enhance the meditation experience by adjusting the prosody for a more gradual slowing of the rate and ensuring a consistent relaxation tone throughout the meditation.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the prosody and pacing for a more relaxing effect. Here is the improved SSML with these enhancements:"
+    ]
+  }
+}
+2025-05-11 00:39:41,684 - meditation_tts - INFO - Saved state after step generate_audio to: output/state/state_generate_audio_20250511_003941.json
+2025-05-11 00:39:41,684 - meditation_tts - INFO - State after single step generate_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:39:41,686 - meditation_tts - INFO - Starting meditation generation process from step: mix_audio
+2025-05-11 00:39:41,686 - meditation_tts - INFO - Will stop after step: mix_audio
+2025-05-11 00:39:41,687 - meditation_tts - INFO - Request: {"emotional_state": "anxious", "meditation_style": "Mindfulness", "meditation_theme": "StressRelief", "duration_minutes": 12, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:39:41,687 - meditation_tts - INFO - Running steps: ['mix_audio']
+2025-05-11 00:39:41,687 - meditation_tts - INFO - Running step: mix_audio
+2025-05-11 00:39:41,687 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:39:41,687 - meditation_tts - INFO - Running single step: mix_audio
+2025-05-11 00:39:41,687 - meditation_tts - INFO - State before single step mix_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:39:41,687 - meditation_tts - INFO - Starting audio mixing
+2025-05-11 00:39:41,687 - meditation_tts - INFO - ===== STEP: mix_with_soundscape =====
+2025-05-11 00:39:41,687 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": {
+    "status": "generated",
+    "voice_file": "output/audio/meditation_voice_20250511_003941.mp3"
+  },
+  "error": null,
+  "current_step": "mix_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I have identified several areas for improvement to ensure technical correctness, compatibility with AWS Polly Neural voices, and enhancement of the meditation experience. Here are the corrections and enhancements made:\n\n1. **Technical Correctness**:\n   - All tags are properly balanced and nested.\n   - Break times are specified with units (\"s\" for seconds).\n   - No invalid attribute values were found.\n\n2. **AWS Polly Neural Voice Compatibility**:\n   - The SSML uses only supported tags for AWS Polly Neural voices.\n\n3. **Meditation Experience Enhancement**:\n   - Gradually decreased the prosody rate throughout the meditation to enhance relaxation.\n   - Adjusted pitch and volume for deeper relaxation sections.\n   - Ensured appropriate pause durations after breathing instructions to allow for a calming effect.\n\nHere is the corrected and improved SSML:",
+      "Iteration 2: Upon reviewing the provided SSML, I found it to be technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags only. However, there are opportunities to enhance the meditation experience by adjusting the prosody for a more gradual slowing of the rate and ensuring a consistent relaxation tone throughout the meditation.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the prosody and pacing for a more relaxing effect. Here is the improved SSML with these enhancements:"
+    ]
+  }
+}
+2025-05-11 00:39:41,827 - ffmpeg_mixer - INFO - Voice duration: 334.42s
+2025-05-11 00:39:41,827 - ffmpeg_mixer - INFO - Background duration: 617.60s
+2025-05-11 00:39:41,827 - ffmpeg_mixer - INFO - Running ffmpeg command to merge audio files
+2025-05-11 00:39:42,652 - ffmpeg_mixer - INFO - Merged audio saved as output/audio/meditation_voice_20250511_003941_with_meditation_bg.mp3
+2025-05-11 00:39:42,652 - ffmpeg_mixer - INFO - Creating sample from 153.31s to 183.31s
+2025-05-11 00:39:42,709 - ffmpeg_mixer - INFO - Sample audio saved as output/audio/sample_meditation_voice_20250511_003941_with_meditation_bg.mp3
+2025-05-11 00:39:42,709 - meditation_tts - INFO - Mixed audio files: Full=output/audio/meditation_voice_20250511_003941_with_meditation_bg.mp3, Sample=output/audio/sample_meditation_voice_20250511_003941_with_meditation_bg.mp3
+2025-05-11 00:39:42,710 - meditation_tts - INFO - Saved complete state to JSON: output/json/meditation_20250511_003942.json
+2025-05-11 00:39:42,710 - meditation_tts - INFO - ===== STEP: mix_with_soundscape_complete =====
+2025-05-11 00:39:42,710 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "anxious",
+    "meditation_style": "Mindfulness",
+    "meditation_theme": "StressRelief",
+    "duration_minutes": 12,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 3806,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation is calming and reassuring, designed to guide the listener from a state of anxiety to one of tranquility and presence. The narration should be warm, gentle, and supportive throughout.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 5680,
+    "has_speak_tag": true
+  },
+  "audio_output": {
+    "status": "completed",
+    "voice_file": "output/audio/meditation_voice_20250511_003941.mp3"
+  },
+  "error": null,
+  "current_step": "mix_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I have identified several areas for improvement to ensure technical correctness, compatibility with AWS Polly Neural voices, and enhancement of the meditation experience. Here are the corrections and enhancements made:\n\n1. **Technical Correctness**:\n   - All tags are properly balanced and nested.\n   - Break times are specified with units (\"s\" for seconds).\n   - No invalid attribute values were found.\n\n2. **AWS Polly Neural Voice Compatibility**:\n   - The SSML uses only supported tags for AWS Polly Neural voices.\n\n3. **Meditation Experience Enhancement**:\n   - Gradually decreased the prosody rate throughout the meditation to enhance relaxation.\n   - Adjusted pitch and volume for deeper relaxation sections.\n   - Ensured appropriate pause durations after breathing instructions to allow for a calming effect.\n\nHere is the corrected and improved SSML:",
+      "Iteration 2: Upon reviewing the provided SSML, I found it to be technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags only. However, there are opportunities to enhance the meditation experience by adjusting the prosody for a more gradual slowing of the rate and ensuring a consistent relaxation tone throughout the meditation.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the prosody and pacing for a more relaxing effect. Here is the improved SSML with these enhancements:"
+    ]
+  }
+}
+2025-05-11 00:39:42,711 - meditation_tts - INFO - Saved state after step mix_audio to: output/state/state_mix_audio_20250511_003942.json
+2025-05-11 00:39:42,711 - meditation_tts - INFO - State after single step mix_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:45:39,994 - meditation_tts - INFO - Starting meditation generation process from step: generate_script
+2025-05-11 00:45:39,995 - meditation_tts - INFO - Will stop after step: generate_script
+2025-05-11 00:45:39,995 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:45:39,996 - meditation_tts - INFO - Running steps: ['generate_script']
+2025-05-11 00:45:39,996 - meditation_tts - INFO - Running step: generate_script
+2025-05-11 00:45:39,997 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "None", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present"}
+2025-05-11 00:45:39,997 - meditation_tts - INFO - Running single step: generate_script
+2025-05-11 00:45:39,997 - meditation_tts - INFO - State before single step generate_script: {"request": "Present", "meditation_script": "None", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present"}
+2025-05-11 00:45:39,997 - meditation_tts - INFO - Starting meditation script generation
+2025-05-11 00:45:39,998 - meditation_tts - INFO - ===== STEP: generate_meditation_script =====
+2025-05-11 00:45:39,998 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": null,
+  "prosody_analysis": null,
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_script"
+}
+2025-05-11 00:45:40,056 - meditation_tts - INFO - Requesting script generation for BodyScan meditation on Gratitude
+2025-05-11 00:45:53,708 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:45:53,724 - meditation_tts - INFO - LLM Interaction: Meditation Script Generation
+2025-05-11 00:45:53,724 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:45:53,724 - meditation_tts - INFO - Prompt preview: Create a 10-minute BodyScan meditation script focused on Gratitude for someone feeling stressed.
+
+The script should be in en-US and voiced by a Female voice.
+
+Include these essential components:
+1. A welcoming introduction (30-45 seconds)
+2. Grounding/centering instructions
+3. Breathing guidance appropriate for this style and emotional state
+4. The main practice section specific to BodyScan
+5. A gentle closing with integration (30-45 seconds)
+
+Structure the script clearly with section markers li...
+2025-05-11 00:45:53,724 - meditation_tts - INFO - Response preview: [INTRODUCTION]
+
+Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel safe and comfortable. This is your time to nurture your body and mind, and to cultivate gratitude even amidst stress. Let us create a sanctuary within, where we can explore the depths of relaxation and appreciation for our bodies.
+
+Take a moment to acknowledge your intention for being here. Perhaps it's to find peace, to relieve stress, or sim...
+2025-05-11 00:45:53,726 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004553_Meditation_Script_Generation.json
+2025-05-11 00:45:53,727 - meditation_tts - INFO - Generated script with 4500 characters
+2025-05-11 00:45:53,727 - meditation_tts - INFO - Requesting section analysis
+2025-05-11 00:45:57,904 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:45:57,907 - meditation_tts - INFO - LLM Interaction: Script Section Analysis
+2025-05-11 00:45:57,908 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:45:57,908 - meditation_tts - INFO - Prompt preview: Analyze this meditation script and identify distinct sections with their boundaries.
+
+SCRIPT:
+[INTRODUCTION]
+
+Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel safe and comfortable. This is your time to nurture your body and mind, and to cultivate gratitude even amidst stress. Let us create a sanctuary within, where we can explore the depths of relaxation and appreciation for our bodies.
+
+Take a moment to ac...
+2025-05-11 00:45:57,908 - meditation_tts - INFO - Response preview: ```json
+[
+  {
+    "section_type": "introduction",
+    "content": {
+      "start": "Welcome, and thank you for taking this moment for yourself.",
+      "end": "Whatever your intention, hold it gently in your mind without judgment or expectation."
+    },
+    "function": "To welcome the participant and set the intention for the meditation practice, creating a safe and comfortable space."
+  },
+  {
+    "section_type": "grounding",
+    "content": {
+      "start": "Begin by finding a comfortable positi...
+2025-05-11 00:45:57,909 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004557_Script_Section_Analysis.json
+2025-05-11 00:45:57,910 - meditation_tts - INFO - Completed script generation with 6 sections
+2025-05-11 00:45:57,910 - meditation_tts - INFO - ===== STEP: generate_meditation_script_complete =====
+2025-05-11 00:45:57,911 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": null,
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_script",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:45:57,913 - meditation_tts - INFO - Saved state after step generate_script to: output/state/state_generate_script_20250511_004557.json
+2025-05-11 00:45:57,913 - meditation_tts - INFO - State after single step generate_script: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:45:57,920 - meditation_tts - INFO - Starting meditation generation process from step: analyze_prosody
+2025-05-11 00:45:57,920 - meditation_tts - INFO - Will stop after step: analyze_prosody
+2025-05-11 00:45:57,920 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:45:57,920 - meditation_tts - INFO - Running steps: ['analyze_prosody']
+2025-05-11 00:45:57,921 - meditation_tts - INFO - Running step: analyze_prosody
+2025-05-11 00:45:57,921 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:45:57,921 - meditation_tts - INFO - Running single step: analyze_prosody
+2025-05-11 00:45:57,922 - meditation_tts - INFO - State before single step analyze_prosody: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "None", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:45:57,922 - meditation_tts - INFO - Starting prosody needs analysis
+2025-05-11 00:45:57,922 - meditation_tts - INFO - ===== STEP: analyze_prosody_needs =====
+2025-05-11 00:45:57,923 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": null,
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "analyze_prosody",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:45:57,952 - meditation_tts - INFO - Requesting prosody analysis
+2025-05-11 00:46:06,829 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:46:06,832 - meditation_tts - INFO - LLM Interaction: Prosody Analysis
+2025-05-11 00:46:06,833 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:46:06,833 - meditation_tts - INFO - Prompt preview: I need a detailed prosody analysis for this meditation script that will be narrated using AWS Polly Neural voices (primarily Joanna for English, Conchita for Spanish).
+
+Script context:
+- Emotional state: stressed
+- Meditation style: BodyScan
+- Theme: Gratitude
+- Duration: 10 minutes
+- Language: en-US
+
+Here is the meditation script:
+        [INTRODUCTION]
+
+Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel saf...
+2025-05-11 00:46:06,833 - meditation_tts - INFO - Response preview: ```json
+{
+  "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+  "key_terms": ["gratitude", "relaxation", "breath", "awareness", "appreciation", "peace", "support", "strength"],
+  "breathing_patterns": [
+    {
+      "type": "natural deep breathing",
+      "phases":...
+2025-05-11 00:46:06,834 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004606_Prosody_Analysis.json
+2025-05-11 00:46:06,834 - meditation_tts - INFO - Completed prosody analysis
+2025-05-11 00:46:06,834 - meditation_tts - INFO - ===== STEP: analyze_prosody_needs_complete =====
+2025-05-11 00:46:06,834 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "analyze_prosody",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:46:06,837 - meditation_tts - INFO - Saved state after step analyze_prosody to: output/state/state_analyze_prosody_20250511_004606.json
+2025-05-11 00:46:06,838 - meditation_tts - INFO - State after single step analyze_prosody: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:06,841 - meditation_tts - INFO - Starting meditation generation process from step: create_profile
+2025-05-11 00:46:06,842 - meditation_tts - INFO - Will stop after step: create_profile
+2025-05-11 00:46:06,842 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:46:06,842 - meditation_tts - INFO - Running steps: ['create_profile']
+2025-05-11 00:46:06,843 - meditation_tts - INFO - Running step: create_profile
+2025-05-11 00:46:06,843 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:06,843 - meditation_tts - INFO - Running single step: create_profile
+2025-05-11 00:46:06,843 - meditation_tts - INFO - State before single step create_profile: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "None", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:06,843 - meditation_tts - INFO - Starting prosody profile generation
+2025-05-11 00:46:06,844 - meditation_tts - INFO - ===== STEP: generate_prosody_profile =====
+2025-05-11 00:46:06,844 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": null,
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "create_profile",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:46:06,884 - meditation_tts - INFO - Requesting prosody profile generation
+2025-05-11 00:46:13,162 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:46:13,166 - meditation_tts - INFO - LLM Interaction: Prosody Profile Generation
+2025-05-11 00:46:13,166 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:46:13,166 - meditation_tts - INFO - Prompt preview: Create a comprehensive prosody profile for this meditation:
+
+CONTEXT:
+- Emotional state: stressed
+- Meditation style: BodyScan
+- Theme: Gratitude
+- Duration: 10 minutes
+- Language: en-US
+- Voice: Female (en-US)
+
+PROSODY ANALYSIS:
+{
+  "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepeni...
+2025-05-11 00:46:13,166 - meditation_tts - INFO - Response preview: ```json
+{
+  "pitch": {
+    "base_pitch": "-10%",
+    "range": "moderate",
+    "contour_pattern": "gradual downward drift with gentle rises",
+    "emotional_contours": {
+      "calm": "gradual downward drift with gentle rises",
+      "anxious": "higher baseline with more variation",
+      "energetic": "higher baseline with upward contours",
+      "tired": "lower baseline with minimal variation",
+      "happy": "moderate baseline with upward contours",
+      "sad": "lower baseline with downward co...
+2025-05-11 00:46:13,168 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004613_Prosody_Profile_Generation.json
+2025-05-11 00:46:13,168 - meditation_tts - INFO - Completed prosody profile generation
+2025-05-11 00:46:13,169 - meditation_tts - INFO - ===== STEP: generate_prosody_profile_complete =====
+2025-05-11 00:46:13,169 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "create_profile",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:46:13,171 - meditation_tts - INFO - Saved state after step create_profile to: output/state/state_create_profile_20250511_004613.json
+2025-05-11 00:46:13,171 - meditation_tts - INFO - State after single step create_profile: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:13,177 - meditation_tts - INFO - Starting meditation generation process from step: generate_ssml
+2025-05-11 00:46:13,177 - meditation_tts - INFO - Will stop after step: generate_ssml
+2025-05-11 00:46:13,177 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:46:13,177 - meditation_tts - INFO - Running steps: ['generate_ssml']
+2025-05-11 00:46:13,178 - meditation_tts - INFO - Running step: generate_ssml
+2025-05-11 00:46:13,178 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:13,178 - meditation_tts - INFO - Running single step: generate_ssml
+2025-05-11 00:46:13,178 - meditation_tts - INFO - State before single step generate_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "None", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:13,178 - meditation_tts - INFO - Starting SSML generation
+2025-05-11 00:46:13,178 - meditation_tts - INFO - ===== STEP: generate_ssml =====
+2025-05-11 00:46:13,179 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": null,
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:46:13,212 - meditation_tts - INFO - Requesting SSML generation
+2025-05-11 00:46:26,444 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:46:26,451 - meditation_tts - INFO - LLM Interaction: SSML Generation
+2025-05-11 00:46:26,452 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:46:26,452 - meditation_tts - INFO - Prompt preview: Generate optimal SSML markup for this meditation script that will be synthesized using AWS Polly Neural voices.
+
+CONTEXT:
+- Emotional state: stressed
+- Meditation style: BodyScan
+- Theme: Gratitude
+- Duration: 10 minutes
+- Language: en-US
+- Voice: Female (en-US)
+
+PROSODY PROFILE:
+{
+  "pitch": {
+    "base_pitch": "-10%",
+    "range": "moderate",
+    "contour_pattern": "gradual downward drift with gentle rises",
+    "emotional_contours": {
+      "calm": "gradual downward drift with gentle rises",
+...
+2025-05-11 00:46:26,452 - meditation_tts - INFO - Response preview: ```xml
+<speak>
+  <p>
+    <prosody rate="80%" pitch="-10%" volume="medium">
+      Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel safe and comfortable. This is your time to nurture your body and mind, and to cultivate <prosody rate="75%" volume="soft">gratitude even amidst stress</prosody>. Let us create a sanctuary within, where we can explore the depths of relaxation and appreciation for our bodies.
+     ...
+2025-05-11 00:46:26,454 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004626_SSML_Generation.json
+2025-05-11 00:46:26,454 - meditation_tts - INFO - Completed initial SSML generation with 6348 characters
+2025-05-11 00:46:26,454 - meditation_tts - INFO - The SSML will be reviewed and improved in the next step
+2025-05-11 00:46:26,454 - meditation_tts - INFO - ===== STEP: generate_ssml_complete =====
+2025-05-11 00:46:26,455 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:46:26,456 - meditation_tts - INFO - Saved state after step generate_ssml to: output/state/state_generate_ssml_20250511_004626.json
+2025-05-11 00:46:26,457 - meditation_tts - INFO - State after single step generate_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:26,467 - meditation_tts - INFO - Starting meditation generation process from step: review_and_improve_ssml
+2025-05-11 00:46:26,467 - meditation_tts - INFO - Will stop after step: review_and_improve_ssml
+2025-05-11 00:46:26,468 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:46:26,468 - meditation_tts - INFO - Running steps: ['review_and_improve_ssml']
+2025-05-11 00:46:26,468 - meditation_tts - INFO - Running step: review_and_improve_ssml
+2025-05-11 00:46:26,468 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:26,468 - meditation_tts - INFO - Running single step: review_and_improve_ssml
+2025-05-11 00:46:26,468 - meditation_tts - INFO - State before single step review_and_improve_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present"}
+2025-05-11 00:46:26,468 - meditation_tts - INFO - Starting SSML review and improvement
+2025-05-11 00:46:26,469 - meditation_tts - INFO - ===== STEP: review_and_improve_ssml =====
+2025-05-11 00:46:26,469 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "review_and_improve_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'"
+}
+2025-05-11 00:46:26,499 - meditation_tts - INFO - Starting SSML review iteration 1
+2025-05-11 00:46:26,500 - meditation_tts - INFO - Requesting SSML review iteration 1
+2025-05-11 00:46:39,071 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:46:39,075 - meditation_tts - INFO - LLM Interaction: SSML Review Iteration 1
+2025-05-11 00:46:39,075 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:46:39,075 - meditation_tts - INFO - Prompt preview: Review and fix the following SSML for a meditation:
+
+```xml
+<speak>
+  <p>
+    <prosody rate="80%" pitch="-10%" volume="medium">
+      Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel safe and comfortable. This is your time to nurture your body and mind, and to cultivate <prosody rate="75%" volume="soft">gratitude even amidst stress</prosody>. Let us create a sanctuary within, where we can explore the depths...
+2025-05-11 00:46:39,075 - meditation_tts - INFO - Response preview: Upon reviewing the provided SSML, I found that it is mostly technically correct, but there are a few areas that need adjustments for technical correctness and enhancement for meditation purposes:
+
+1. **Technical Correctness:**
+   - The SSML is mostly well-structured with balanced tags and valid attribute values.
+   - Ensure all `<break>` tags have appropriate units (they are correctly using "s" for seconds).
+   - Ensure that all `<prosody>` tags are correctly nested and closed.
+
+2. **AWS Polly N...
+2025-05-11 00:46:39,077 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004639_SSML_Review_Iteration_1.json
+2025-05-11 00:46:39,078 - meditation_tts - INFO - SSML updated in iteration 1
+2025-05-11 00:46:39,078 - meditation_tts - INFO - Starting SSML review iteration 2
+2025-05-11 00:46:39,078 - meditation_tts - INFO - Requesting SSML review iteration 2
+2025-05-11 00:46:50,333 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:46:50,337 - meditation_tts - INFO - LLM Interaction: SSML Review Iteration 2
+2025-05-11 00:46:50,337 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:46:50,337 - meditation_tts - INFO - Prompt preview: Review and fix the following SSML for a meditation:
+
+```xml
+<speak>
+  <p>
+    <prosody rate="80%" pitch="-10%" volume="medium">
+      Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel safe and comfortable. This is your time to nurture your body and mind, and to cultivate <prosody rate="75%" volume="soft">gratitude even amidst stress</prosody>. Let us create a sanctuary within, where we can explore the depths...
+2025-05-11 00:46:50,337 - meditation_tts - INFO - Response preview: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more calming effect. Here are the improvements made:
+
+1. **Progressive slowing of rate**: Gradually decrease the rate throughout the meditation to enhance relaxation.
+2. **Appropriate pause durations**: Ensure pauses after breathing instructions are lo...
+2025-05-11 00:46:50,339 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004650_SSML_Review_Iteration_2.json
+2025-05-11 00:46:50,339 - meditation_tts - INFO - SSML updated in iteration 2
+2025-05-11 00:46:50,339 - meditation_tts - INFO - Starting SSML review iteration 3
+2025-05-11 00:46:50,339 - meditation_tts - INFO - Requesting SSML review iteration 3
+2025-05-11 00:47:00,845 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-11 00:47:00,850 - meditation_tts - INFO - LLM Interaction: SSML Review Iteration 3
+2025-05-11 00:47:00,850 - meditation_tts - INFO - Model: gpt-4o
+2025-05-11 00:47:00,850 - meditation_tts - INFO - Prompt preview: Review and fix the following SSML for a meditation:
+
+```xml
+<speak>
+  <p>
+    <prosody rate="80%" pitch="-10%" volume="medium">
+      Welcome, and thank you for taking this moment for yourself. As we begin this journey, allow yourself to settle into a space where you feel safe and comfortable. This is your time to nurture your body and mind, and to cultivate <prosody rate="75%" volume="soft">gratitude even amidst stress</prosody>. Let us create a sanctuary within, where we can explore the depths...
+2025-05-11 00:47:00,850 - meditation_tts - INFO - Response preview: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags and attributes. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more relaxing and immersive experience.
+
+Here is the improved SSML with enhanced meditation experience:
+
+```xml
+<speak>
+  <p>
+    <prosody rate="80%" pitch="...
+2025-05-11 00:47:00,852 - meditation_tts - INFO - Detailed log saved to: logs/llm_interactions/20250511_004700_SSML_Review_Iteration_3.json
+2025-05-11 00:47:00,852 - meditation_tts - INFO - SSML updated in iteration 3
+2025-05-11 00:47:00,853 - meditation_tts - INFO - Completed SSML review after 3 iterations
+2025-05-11 00:47:00,853 - meditation_tts - INFO - ===== STEP: review_and_improve_ssml_complete =====
+2025-05-11 00:47:00,853 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "review_and_improve_ssml",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I found that it is mostly technically correct, but there are a few areas that need adjustments for technical correctness and enhancement for meditation purposes:\n\n1. **Technical Correctness:**\n   - The SSML is mostly well-structured with balanced tags and valid attribute values.\n   - Ensure all `<break>` tags have appropriate units (they are correctly using \"s\" for seconds).\n   - Ensure that all `<prosody>` tags are correctly nested and closed.\n\n2. **AWS Polly Neural Voice Compatibility:**\n   - The SSML uses only supported tags for AWS Polly Neural voices, so no changes are needed here.\n\n3. **Meditation Experience Enhancement:**\n   - Gradually decrease the rate of speech throughout the meditation to enhance relaxation.\n   - Ensure appropriate pauses after breathing instructions and body scan sections.\n   - Use softer volume and lower pitch for deeper relaxation sections.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 2: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more calming effect. Here are the improvements made:\n\n1. **Progressive slowing of rate**: Gradually decrease the rate throughout the meditation to enhance relaxation.\n2. **Appropriate pause durations**: Ensure pauses after breathing instructions are long enough to allow listeners to follow along comfortably.\n3. **Lower pitch for relaxation sections**: Adjust pitch to be consistently lower for deeper relaxation.\n4. **Softer volume for deeper sections**: Ensure volume is softer in sections focusing on deep relaxation.\n\nHere is the improved SSML:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags and attributes. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more relaxing and immersive experience.\n\nHere is the improved SSML with enhanced meditation experience:"
+    ]
+  }
+}
+2025-05-11 00:47:00,855 - meditation_tts - INFO - Saved state after step review_and_improve_ssml to: output/state/state_review_and_improve_ssml_20250511_004700.json
+2025-05-11 00:47:00,855 - meditation_tts - INFO - State after single step review_and_improve_ssml: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:47:00,862 - meditation_tts - INFO - Starting meditation generation process from step: generate_audio
+2025-05-11 00:47:00,862 - meditation_tts - INFO - Will stop after step: generate_audio
+2025-05-11 00:47:00,863 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:47:00,863 - meditation_tts - INFO - Running steps: ['generate_audio']
+2025-05-11 00:47:00,863 - meditation_tts - INFO - Running step: generate_audio
+2025-05-11 00:47:00,863 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:47:00,864 - meditation_tts - INFO - Running single step: generate_audio
+2025-05-11 00:47:00,864 - meditation_tts - INFO - State before single step generate_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "None", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:47:00,864 - meditation_tts - INFO - Starting audio generation
+2025-05-11 00:47:00,864 - meditation_tts - INFO - ===== STEP: generate_meditation_audio =====
+2025-05-11 00:47:00,864 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": null,
+  "error": null,
+  "current_step": "generate_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I found that it is mostly technically correct, but there are a few areas that need adjustments for technical correctness and enhancement for meditation purposes:\n\n1. **Technical Correctness:**\n   - The SSML is mostly well-structured with balanced tags and valid attribute values.\n   - Ensure all `<break>` tags have appropriate units (they are correctly using \"s\" for seconds).\n   - Ensure that all `<prosody>` tags are correctly nested and closed.\n\n2. **AWS Polly Neural Voice Compatibility:**\n   - The SSML uses only supported tags for AWS Polly Neural voices, so no changes are needed here.\n\n3. **Meditation Experience Enhancement:**\n   - Gradually decrease the rate of speech throughout the meditation to enhance relaxation.\n   - Ensure appropriate pauses after breathing instructions and body scan sections.\n   - Use softer volume and lower pitch for deeper relaxation sections.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 2: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more calming effect. Here are the improvements made:\n\n1. **Progressive slowing of rate**: Gradually decrease the rate throughout the meditation to enhance relaxation.\n2. **Appropriate pause durations**: Ensure pauses after breathing instructions are long enough to allow listeners to follow along comfortably.\n3. **Lower pitch for relaxation sections**: Adjust pitch to be consistently lower for deeper relaxation.\n4. **Softer volume for deeper sections**: Ensure volume is softer in sections focusing on deep relaxation.\n\nHere is the improved SSML:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags and attributes. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more relaxing and immersive experience.\n\nHere is the improved SSML with enhanced meditation experience:"
+    ]
+  }
+}
+2025-05-11 00:47:00,957 - meditation_tts - INFO - SSML length: 6348 characters
+2025-05-11 00:47:00,957 - meditation_tts - INFO - SSML exceeds AWS Polly length limit (6348 chars), splitting into chunks
+2025-05-11 00:47:01,025 - meditation_tts - INFO - Splitting SSML using 6 paragraph tags
+2025-05-11 00:47:01,026 - meditation_tts - INFO - Split SSML into 3 chunks
+2025-05-11 00:47:01,026 - meditation_tts - INFO - Generating audio for chunk 1/3 (2284 chars)
+2025-05-11 00:47:03,715 - meditation_tts - INFO - Audio content written to file output/audio/meditation_audio_Joanna_20250511_004701_chunk_1.mp3
+2025-05-11 00:47:03,716 - meditation_tts - INFO - Generated chunk 1/3: output/audio/meditation_audio_Joanna_20250511_004701_chunk_1.mp3
+2025-05-11 00:47:03,716 - meditation_tts - INFO - Generating audio for chunk 2/3 (2643 chars)
+2025-05-11 00:47:05,629 - meditation_tts - INFO - Audio content written to file output/audio/meditation_audio_Joanna_20250511_004703_chunk_2.mp3
+2025-05-11 00:47:05,630 - meditation_tts - INFO - Generated chunk 2/3: output/audio/meditation_audio_Joanna_20250511_004703_chunk_2.mp3
+2025-05-11 00:47:05,630 - meditation_tts - INFO - Generating audio for chunk 3/3 (1291 chars)
+2025-05-11 00:47:06,446 - meditation_tts - INFO - Audio content written to file output/audio/meditation_audio_Joanna_20250511_004705_chunk_3.mp3
+2025-05-11 00:47:06,447 - meditation_tts - INFO - Generated chunk 3/3: output/audio/meditation_audio_Joanna_20250511_004705_chunk_3.mp3
+2025-05-11 00:47:06,637 - meditation_tts - INFO - Combined 3 audio chunks into: output/audio/meditation_voice_20250511_004706.mp3
+2025-05-11 00:47:06,638 - meditation_tts - INFO - Generated audio file: output/audio/meditation_voice_20250511_004706.mp3
+2025-05-11 00:47:06,638 - meditation_tts - INFO - ===== STEP: generate_meditation_audio_complete =====
+2025-05-11 00:47:06,638 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": {
+    "status": "generated",
+    "voice_file": "output/audio/meditation_voice_20250511_004706.mp3"
+  },
+  "error": null,
+  "current_step": "generate_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I found that it is mostly technically correct, but there are a few areas that need adjustments for technical correctness and enhancement for meditation purposes:\n\n1. **Technical Correctness:**\n   - The SSML is mostly well-structured with balanced tags and valid attribute values.\n   - Ensure all `<break>` tags have appropriate units (they are correctly using \"s\" for seconds).\n   - Ensure that all `<prosody>` tags are correctly nested and closed.\n\n2. **AWS Polly Neural Voice Compatibility:**\n   - The SSML uses only supported tags for AWS Polly Neural voices, so no changes are needed here.\n\n3. **Meditation Experience Enhancement:**\n   - Gradually decrease the rate of speech throughout the meditation to enhance relaxation.\n   - Ensure appropriate pauses after breathing instructions and body scan sections.\n   - Use softer volume and lower pitch for deeper relaxation sections.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 2: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more calming effect. Here are the improvements made:\n\n1. **Progressive slowing of rate**: Gradually decrease the rate throughout the meditation to enhance relaxation.\n2. **Appropriate pause durations**: Ensure pauses after breathing instructions are long enough to allow listeners to follow along comfortably.\n3. **Lower pitch for relaxation sections**: Adjust pitch to be consistently lower for deeper relaxation.\n4. **Softer volume for deeper sections**: Ensure volume is softer in sections focusing on deep relaxation.\n\nHere is the improved SSML:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags and attributes. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more relaxing and immersive experience.\n\nHere is the improved SSML with enhanced meditation experience:"
+    ]
+  }
+}
+2025-05-11 00:47:06,640 - meditation_tts - INFO - Saved state after step generate_audio to: output/state/state_generate_audio_20250511_004706.json
+2025-05-11 00:47:06,640 - meditation_tts - INFO - State after single step generate_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:47:06,642 - meditation_tts - INFO - Starting meditation generation process from step: mix_audio
+2025-05-11 00:47:06,643 - meditation_tts - INFO - Will stop after step: mix_audio
+2025-05-11 00:47:06,643 - meditation_tts - INFO - Request: {"emotional_state": "stressed", "meditation_style": "BodyScan", "meditation_theme": "Gratitude", "duration_minutes": 10, "voice_type": "Female", "language_code": "en-US", "soundscape": "Nature"}
+2025-05-11 00:47:06,643 - meditation_tts - INFO - Running steps: ['mix_audio']
+2025-05-11 00:47:06,643 - meditation_tts - INFO - Running step: mix_audio
+2025-05-11 00:47:06,643 - meditation_tts - INFO - State before step: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:47:06,643 - meditation_tts - INFO - Running single step: mix_audio
+2025-05-11 00:47:06,643 - meditation_tts - INFO - State before single step mix_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
+2025-05-11 00:47:06,643 - meditation_tts - INFO - Starting audio mixing
+2025-05-11 00:47:06,643 - meditation_tts - INFO - ===== STEP: mix_with_soundscape =====
+2025-05-11 00:47:06,643 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": {
+    "status": "generated",
+    "voice_file": "output/audio/meditation_voice_20250511_004706.mp3"
+  },
+  "error": null,
+  "current_step": "mix_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I found that it is mostly technically correct, but there are a few areas that need adjustments for technical correctness and enhancement for meditation purposes:\n\n1. **Technical Correctness:**\n   - The SSML is mostly well-structured with balanced tags and valid attribute values.\n   - Ensure all `<break>` tags have appropriate units (they are correctly using \"s\" for seconds).\n   - Ensure that all `<prosody>` tags are correctly nested and closed.\n\n2. **AWS Polly Neural Voice Compatibility:**\n   - The SSML uses only supported tags for AWS Polly Neural voices, so no changes are needed here.\n\n3. **Meditation Experience Enhancement:**\n   - Gradually decrease the rate of speech throughout the meditation to enhance relaxation.\n   - Ensure appropriate pauses after breathing instructions and body scan sections.\n   - Use softer volume and lower pitch for deeper relaxation sections.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 2: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more calming effect. Here are the improvements made:\n\n1. **Progressive slowing of rate**: Gradually decrease the rate throughout the meditation to enhance relaxation.\n2. **Appropriate pause durations**: Ensure pauses after breathing instructions are long enough to allow listeners to follow along comfortably.\n3. **Lower pitch for relaxation sections**: Adjust pitch to be consistently lower for deeper relaxation.\n4. **Softer volume for deeper sections**: Ensure volume is softer in sections focusing on deep relaxation.\n\nHere is the improved SSML:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags and attributes. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more relaxing and immersive experience.\n\nHere is the improved SSML with enhanced meditation experience:"
+    ]
+  }
+}
+2025-05-11 00:47:06,785 - ffmpeg_mixer - INFO - Voice duration: 439.95s
+2025-05-11 00:47:06,785 - ffmpeg_mixer - INFO - Background duration: 617.60s
+2025-05-11 00:47:06,785 - ffmpeg_mixer - INFO - Running ffmpeg command to merge audio files
+2025-05-11 00:47:07,803 - ffmpeg_mixer - INFO - Merged audio saved as output/audio/meditation_voice_20250511_004706_with_meditation_bg.mp3
+2025-05-11 00:47:07,804 - ffmpeg_mixer - INFO - Creating sample from 225.60s to 255.60s
+2025-05-11 00:47:07,862 - ffmpeg_mixer - INFO - Sample audio saved as output/audio/sample_meditation_voice_20250511_004706_with_meditation_bg.mp3
+2025-05-11 00:47:07,862 - meditation_tts - INFO - Mixed audio files: Full=output/audio/meditation_voice_20250511_004706_with_meditation_bg.mp3, Sample=output/audio/sample_meditation_voice_20250511_004706_with_meditation_bg.mp3
+2025-05-11 00:47:07,863 - meditation_tts - INFO - Saved complete state to JSON: output/json/meditation_20250511_004707.json
+2025-05-11 00:47:07,863 - meditation_tts - INFO - ===== STEP: mix_with_soundscape_complete =====
+2025-05-11 00:47:07,864 - meditation_tts - INFO - State summary: {
+  "request": {
+    "emotional_state": "stressed",
+    "meditation_style": "BodyScan",
+    "meditation_theme": "Gratitude",
+    "duration_minutes": 10,
+    "voice_type": "Female",
+    "language_code": "en-US",
+    "soundscape": "Nature"
+  },
+  "meditation_script": {
+    "length": 4500,
+    "sections": 6
+  },
+  "prosody_analysis": {
+    "overall_tone": "The overall tone of the meditation script is calming and nurturing, designed to guide the listener from a state of stress to one of deep relaxation and gratitude. The tone should be gentle, soothing, and supportive throughout, with a gradual deepening of relaxation.",
+    "key_terms_count": 8
+  },
+  "prosody_profile": {
+    "base_rate": "85%"
+  },
+  "ssml_output": {
+    "length": 6348,
+    "has_speak_tag": true
+  },
+  "audio_output": {
+    "status": "completed",
+    "voice_file": "output/audio/meditation_voice_20250511_004706.mp3"
+  },
+  "error": null,
+  "current_step": "mix_audio",
+  "section_parsing_error": "Used fallback section parsing: 'type'",
+  "ssml_review": {
+    "iterations": 3,
+    "issues_fixed": [
+      "Iteration 1: Upon reviewing the provided SSML, I found that it is mostly technically correct, but there are a few areas that need adjustments for technical correctness and enhancement for meditation purposes:\n\n1. **Technical Correctness:**\n   - The SSML is mostly well-structured with balanced tags and valid attribute values.\n   - Ensure all `<break>` tags have appropriate units (they are correctly using \"s\" for seconds).\n   - Ensure that all `<prosody>` tags are correctly nested and closed.\n\n2. **AWS Polly Neural Voice Compatibility:**\n   - The SSML uses only supported tags for AWS Polly Neural voices, so no changes are needed here.\n\n3. **Meditation Experience Enhancement:**\n   - Gradually decrease the rate of speech throughout the meditation to enhance relaxation.\n   - Ensure appropriate pauses after breathing instructions and body scan sections.\n   - Use softer volume and lower pitch for deeper relaxation sections.\n\nHere is the improved SSML with enhancements for meditation experience:",
+      "Iteration 2: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more calming effect. Here are the improvements made:\n\n1. **Progressive slowing of rate**: Gradually decrease the rate throughout the meditation to enhance relaxation.\n2. **Appropriate pause durations**: Ensure pauses after breathing instructions are long enough to allow listeners to follow along comfortably.\n3. **Lower pitch for relaxation sections**: Adjust pitch to be consistently lower for deeper relaxation.\n4. **Softer volume for deeper sections**: Ensure volume is softer in sections focusing on deep relaxation.\n\nHere is the improved SSML:",
+      "Iteration 3: Upon reviewing the provided SSML, I found that it is technically correct with no unbalanced tags, incorrect nesting, or invalid values. The SSML is compatible with AWS Polly Neural voices, as it uses supported tags and attributes. However, there are opportunities to enhance the meditation experience by adjusting the pacing and prosody for a more relaxing and immersive experience.\n\nHere is the improved SSML with enhanced meditation experience:"
+    ]
+  }
+}
+2025-05-11 00:47:07,864 - meditation_tts - INFO - Saved state after step mix_audio to: output/state/state_mix_audio_20250511_004707.json
+2025-05-11 00:47:07,864 - meditation_tts - INFO - State after single step mix_audio: {"request": "Present", "meditation_script": "Present", "prosody_analysis": "Present", "prosody_profile": "Present", "ssml_output": "Present", "audio_output": "Present", "error": "None", "current_step": "Present", "section_parsing_error": "Present", "ssml_review": "Present"}
